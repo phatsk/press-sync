@@ -7,6 +7,8 @@
 
 namespace Press_Sync;
 
+use Press_Sync\handlers;
+
 /**
  * The Press_Sync class.
  *
@@ -1529,5 +1531,17 @@ AND tt.term_taxonomy_id IN (
 SQL;
 		$where = $GLOBALS['wpdb']->prepare( $where, get_option( 'ps_testing_post' ) );
 		return $where;
+	}
+
+	public function register_handler( $object_type ) {
+		if ( 'taxonomy_term' !== $object_term ) {
+			return false;
+		}
+
+		$classname = ucwords( $object_type, '_' ) . '_Handler';
+
+		$o = new $classname;
+
+		echo '<pre>', print_r($o, true); die;
 	}
 }

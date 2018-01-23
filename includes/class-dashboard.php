@@ -184,6 +184,8 @@ class Dashboard {
 	public function get_objects_to_sync_count_via_ajax() {
 
 		$objects_to_sync = get_option( 'ps_objects_to_sync' );
+		$this->plugin->register_handler( $objects_to_sync );
+		die;
 
 		wp_send_json_success( array(
 			'objects_to_sync'  => $objects_to_sync,
