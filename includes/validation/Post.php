@@ -8,13 +8,19 @@ namespace Press_Sync\validation;
  * @since   NEXT
  */
 class Post implements CountInterface {
+	private $post_id = 0;
+
 	/**
 	 * Get all of the Post data for validation.
 	 *
 	 * @return array
 	 * @since NEXT
 	 */
-	public function get_data( $count ) {
+	public function get_data( $count, $post_id ) {
+		if ( $post_id ) {
+			$this->post_id = $post_id;
+		}
+
 		return array(
 			'count'      => $this->get_count(),
 			'sample'     => $this->get_sample_posts_data( $count ),
@@ -70,6 +76,10 @@ class Post implements CountInterface {
 	 * @param int $count
 	 */
 	public function get_sample_posts_data( $count = 5 ) {
+		if ( absint( $this->post_id ) ) {
+			return $this->format_sample_post_data( array( get_post( $this->post_id ) ) );
+		}
+
 		return $this->format_sample_post_data( $this->get_random_posts( $count ) );
 	}
 

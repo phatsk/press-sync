@@ -46,10 +46,16 @@ class Validate extends AbstractCliCommand {
 	 *   - posts
 	 *   - taxonomies
 	 *
+	 * <count>
+	 * : The number of post samples to get (defaults to 5).
+	 *
+	 * <post_id>
+	 * : If supplied, validation will run for only the supplied poost ID.
+	 *
 	 * @param array $args       Command arguments.
 	 * @param array $assoc_args Command associative arguments.
 	 *
-	 * @synopsis <validation_entity> [--remote_domain=<remote_domain>] [--remote_press_sync_key=<remote_press_sync_key>] [--count=<count>]
+	 * @synopsis <validation_entity> [--remote_domain=<remote_domain>] [--remote_press_sync_key=<remote_press_sync_key>] [--count=<count>] [--post_id=<post_id>]
 	 * @since NEXT
 
 	 * @return void

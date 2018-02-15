@@ -44,7 +44,7 @@ class PostValidator extends AbstractValidator implements ValidatorInterface {
 	 * @since NEXT
 	 */
 	public function get_source_data() {
-		$this->source_data = ( new Post() )->get_data( $this->args['sample_count'] );
+		$this->source_data = ( new Post() )->get_data( $this->args['sample_count'], $this->args['post_id'] );
 
 		return $this->source_data;
 	}
